@@ -3,6 +3,13 @@
 It is a demo project for demonstrating what can be generated with [QuickAdminPanel](https://quickadminpanel.com) tool.
 SportsLeague is all generated with __QuickAdmin__ except for front-end code.
 
+## Clickable live-demo
+
+[demo-sportsleague.quickadminpanel.com](http://demo-sportsleague.quickadminpanel.com)
+
+- __Email__: admin@admin.com
+- __Pass__: password
+
 ![Sports_league screenshot](http://webcoderpro.com/sports-league-demo.png)
 
 ![Sports_league screenshot2](http://webcoderpro.com/sports-league-demo2.png)
