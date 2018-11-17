@@ -10,9 +10,9 @@ SportsLeague is all generated with __QuickAdmin__ except for front-end code.
 - __Email__: admin@admin.com
 - __Pass__: password
 
-![Sports_league screenshot](http://webcoderpro.com/sports-league-demo.png)
+![Sports_league screenshot](https://quickadminpanel.com/assets/pages/demos/demo-sportsleague-01.png)
 
-![Sports_league screenshot2](http://webcoderpro.com/sports-league-demo2.png)
+![Sports_league screenshot2](https://quickadminpanel.com/assets/pages/demos/demo-sportsleague-02.png)
 
 ## How to use
 
