@@ -12,6 +12,6 @@ class LeagueTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(League::class)->times(faker()->numberBetween(10, 20))->create();
+        factory(League::class)->times(faker()->numberBetween(6, 10))->create();
     }
 }
