@@ -23,7 +23,10 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -44,6 +47,24 @@
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
+        ],
+        "setup": [
+            "composer install",
+
+            "php artisan migrate:refresh --seed",
+
+            "php artisan key:generate",
+
+            "php artisan config:clear",
+            "php artisan cache:clear",
+            "php artisan view:clear",
+            "php artisan route:clear",
+
+            "composer dump-autoload",
+
+            "rm -rf node_modules",
+            "yarn install",
+            "yarn run dev"
         ]
     },
     "config": {
