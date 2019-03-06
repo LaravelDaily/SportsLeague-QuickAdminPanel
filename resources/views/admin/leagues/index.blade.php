@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.teams.title')</h3>
-    @can('team_create')
+    <h3 class="page-title">@lang('quickadmin.leagues.title')</h3>
+    @can('league_create')
     <p>
-        <a href="{{ route('admin.teams.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
+        <a href="{{ route('admin.leagues.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
 
     </p>
     @endcan
@@ -15,40 +15,40 @@
         </div>
 
         <div class="panel-body table-responsive">
-            <table class="table table-bordered table-striped {{ count($teams) > 0 ? 'datatable' : '' }} @can('team_delete') dt-select @endcan">
+            <table class="table table-bordered table-striped {{ count($leagues) > 0 ? 'datatable' : '' }} @can('league_delete') dt-select @endcan">
                 <thead>
                     <tr>
-                        @can('team_delete')
+                        @can('league_delete')
                             <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
                         @endcan
 
-                        <th>@lang('quickadmin.teams.fields.name')</th>
+                        <th>@lang('quickadmin.leagues.fields.name')</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @if (count($teams) > 0)
-                        @foreach ($teams as $team)
-                            <tr data-entry-id="{{ $team->id }}">
-                                @can('team_delete')
+                    @if (count($leagues) > 0)
+                        @foreach ($leagues as $league)
+                            <tr data-entry-id="{{ $league->id }}">
+                                @can('league_delete')
                                     <td></td>
                                 @endcan
 
-                                <td>{{ $team->name }}</td>
+                                <td>{{ $league->name }}</td>
                                 <td>
-                                    @can('team_view')
-                                    <a href="{{ route('admin.teams.show',[$team->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
+                                    @can('league_view')
+                                    <a href="{{ route('admin.leagues.show',[$league->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
                                     @endcan
-                                    @can('team_edit')
-                                    <a href="{{ route('admin.teams.edit',[$team->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
+                                    @can('league_edit')
+                                    <a href="{{ route('admin.leagues.edit',[$league->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                     @endcan
-                                    @can('team_delete')
+                                    @can('league_delete')
                                     {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                        'route' => ['admin.teams.destroy', $team->id])) !!}
+                                        'route' => ['admin.leagues.destroy', $league->id])) !!}
                                     {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                     @endcan
@@ -68,8 +68,8 @@
 
 @section('javascript')
     <script>
-        @can('team_delete')
-            window.route_mass_crud_entries_destroy = '{{ route('admin.teams.mass_destroy') }}';
+        @can('league_delete')
+            window.route_mass_crud_entries_destroy = '{{ route('admin.leagues.mass_destroy') }}';
         @endcan
 
     </script>

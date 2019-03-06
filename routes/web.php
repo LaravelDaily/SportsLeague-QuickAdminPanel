@@ -1,5 +1,8 @@
 <?php
-Route::get('/', function () { return redirect('/games'); });
+Route::get('/', function () {
+    return redirect()->route('/games');
+});
+Route::get('/', 'GamesController@index');
 Route::get('/games', 'GamesController@index');
 Route::get('/teams', 'TeamsController@index');
 Route::get('/players/{team_id}', 'TeamsController@players');
@@ -28,6 +31,15 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
     Route::resource('teams', 'Admin\TeamsController');
     Route::post('teams_mass_destroy', ['uses' => 'Admin\TeamsController@massDestroy', 'as' => 'teams.mass_destroy']);
+    Route::resource('leagues', 'Admin\LeaguesController');
+    Route::post('leagues_mass_destroy', ['uses' => 'Admin\LeaguesController@massDestroy', 'as' => 'leagues.mass_destroy']);
+
+    Route::resource('dartleagues', 'Admin\DartleaguesController');
+    Route::post('dartleagues_mass_destroy', ['uses' => 'Admin\DartleaguesController@massDestroy', 'as' => 'dartleagues.mass_destroy']);
+    Route::post('dartleagues/{dartleagueId}', ['uses' => 'Admin\DartleaguesLeagueController@store', 'as' => 'dartleagues.league.store']);
+    Route::get('dartleagues/{dartleagueId}/league', ['uses' => 'Admin\DartleaguesLeagueController@create', 'as' => 'dartleagues.league.create']);
+    Route::delete('dartleagues/{dartleagueId}/league/{leagueId}', ['uses' => 'Admin\DartleaguesLeagueController@destroy', 'as' => 'dartleagues.league.destroy']);
+
     Route::resource('players', 'Admin\PlayersController');
     Route::post('players_mass_destroy', ['uses' => 'Admin\PlayersController@massDestroy', 'as' => 'players.mass_destroy']);
     Route::resource('games', 'Admin\GamesController');

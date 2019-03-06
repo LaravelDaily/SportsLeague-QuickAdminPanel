@@ -4,8 +4,9 @@ namespace App;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class League extends Model
+class Dartleague extends Model
 {
     use HasSlug;
 
@@ -16,5 +17,10 @@ class League extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
+    }
+
+    public function leagues(): BelongsToMany
+    {
+        return $this->belongsToMany(League::class);
     }
 }

@@ -6,7 +6,6 @@ use App\Game;
 
 class GamesController extends Controller
 {
-
     public function index()
     {
         $games = Game::whereNull('result1')->get();
@@ -14,5 +13,4 @@ class GamesController extends Controller
 
         return view('front.games', compact('games', 'results'));
     }
-
 }

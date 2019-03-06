@@ -12,7 +12,7 @@
                 </a>
             </li>
 
-            
+
             @can('user_management_access')
             <li class="treeview">
                 <a href="#">
@@ -23,7 +23,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                
+
                 @can('role_access')
                 <li class="{{ $request->segment(2) == 'roles' ? 'active active-sub' : '' }}">
                         <a href="{{ route('admin.roles.index') }}">
@@ -47,6 +47,24 @@
                 </ul>
             </li>
             @endcan
+            @can('dartleague_access')
+            <li class="{{ $request->segment(2) == 'dartleagues' ? 'active' : '' }}">
+                <a href="{{ route('admin.dartleagues.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.dartleagues.title')</span>
+                </a>
+            </li>
+            @endcan
+
+            @can('league_access')
+            <li class="{{ $request->segment(2) == 'leagues' ? 'active' : '' }}">
+                <a href="{{ route('admin.leagues.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.leagues.title')</span>
+                </a>
+            </li>
+            @endcan
+
             @can('team_access')
             <li class="{{ $request->segment(2) == 'teams' ? 'active' : '' }}">
                 <a href="{{ route('admin.teams.index') }}">
@@ -55,7 +73,7 @@
                 </a>
             </li>
             @endcan
-            
+
             @can('player_access')
             <li class="{{ $request->segment(2) == 'players' ? 'active' : '' }}">
                 <a href="{{ route('admin.players.index') }}">
@@ -64,7 +82,7 @@
                 </a>
             </li>
             @endcan
-            
+
             @can('game_access')
             <li class="{{ $request->segment(2) == 'games' ? 'active' : '' }}">
                 <a href="{{ route('admin.games.index') }}">
@@ -73,11 +91,11 @@
                 </a>
             </li>
             @endcan
-            
 
-            
 
-            
+
+
+
 
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">

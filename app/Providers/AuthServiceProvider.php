@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
 
         $user = \Auth::user();
 
-        
+
         // Auth gates for: User management
         Gate::define('user_management_access', function ($user) {
             return in_array($user->role_id, [1]);
@@ -84,6 +84,40 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
+        // Auth gates for: Dartleagues
+        Gate::define('dartleague_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('dartleague_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('dartleague_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('dartleague_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('dartleague_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
+        // Auth gates for: Leagues
+        Gate::define('league_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('league_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('league_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('league_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('league_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
         // Auth gates for: Players
         Gate::define('player_access', function ($user) {
             return in_array($user->role_id, [1, 2]);
@@ -117,6 +151,5 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('game_delete', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
-
     }
 }
